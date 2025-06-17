@@ -1,0 +1,10 @@
+python-dotenv
+openai
+opensearch-py>=2.0.0,<3.0.0
+langchain
+langchain-openai
+langchain-community
+tiktoken
+unstructured[md]
+Flask
+flask-cors

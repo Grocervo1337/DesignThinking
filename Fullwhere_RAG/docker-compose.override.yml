@@ -1,0 +1,19 @@
+services:
+  frontend:
+    # On spécifie explicitement de construire à partir de l'étape "build" du Dockerfile
+    build:
+      context: ./frontend
+      target: build
+    # On change la commande pour lancer le serveur de développement de React
+    command: npm start
+    volumes:
+      # On monte le code source local dans le conteneur
+      - ./frontend:/app
+      # Astuce : on s'assure que node_modules n'est pas écrasé par le volume local
+      - /app/node_modules
+    ports:
+      # Le port du serveur de dev (3000) est mappé sur le port 3001 de votre machine
+      - "3001:3000"
+    # S'assurer que le backend est prêt avant de démarrer le frontend
+    depends_on:
+      - backend 
